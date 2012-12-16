@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\5 scripts\Dogs.boo" />
+     <Compile Include="Assets\5 scripts\God.boo" />
      <Compile Include="Assets\5 scripts\GrandMa.boo" />
      <Compile Include="Assets\5 scripts\GrandPa.boo" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />

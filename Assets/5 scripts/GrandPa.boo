@@ -30,34 +30,34 @@ class GrandPa(MonoBehaviour):
 		
 		# left
 
-		if Input.GetKey(KeyCode.LeftArrow):
+		if Input.GetKey(KeyCode.A):
 			move += Vector3.left
 
-		if Input.GetKeyUp(KeyCode.LeftArrow):
+		if Input.GetKeyUp(KeyCode.A):
 			Idle()
 
 		# right
 
-		if Input.GetKey(KeyCode.RightArrow):
+		if Input.GetKey(KeyCode.D):
 			move += Vector3.right
 
-		if Input.GetKeyUp(KeyCode.RightArrow):
+		if Input.GetKeyUp(KeyCode.D):
 			Idle()
 
 		# up
 
-		if Input.GetKey(KeyCode.UpArrow):
+		if Input.GetKey(KeyCode.W):
 			move += Vector3.up
 
-		if Input.GetKeyUp(KeyCode.UpArrow):
+		if Input.GetKeyUp(KeyCode.W):
 			Idle()
 
 		# down
 
-		if Input.GetKey(KeyCode.DownArrow):
+		if Input.GetKey(KeyCode.S):
 			move += Vector3.down
 
-		if Input.GetKeyUp(KeyCode.DownArrow):
+		if Input.GetKeyUp(KeyCode.S):
 			Idle()
 
 
