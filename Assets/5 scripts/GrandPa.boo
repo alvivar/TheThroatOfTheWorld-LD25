@@ -9,6 +9,8 @@ class GrandPa(MonoBehaviour):
 	move as Vector3 = Vector3.zero
 	speedGround as single = 0.25F
 
+	public lastDir as single = -1 # 0 1 2 3 = up right down left
+
 
 	def Start():
 		controller = GetComponent[of CharacterController]()
@@ -24,8 +26,6 @@ class GrandPa(MonoBehaviour):
 		
 	def Idle():
 		move = Vector3.zero
-		print(Vector3.Distance(Vector3.zero, transform.position))
-		print(transform.position)
 
 
 	def Controls():
@@ -34,6 +34,7 @@ class GrandPa(MonoBehaviour):
 
 		if Input.GetKey(KeyCode.A):
 			move += Vector3.left
+			lastDir = 3
 
 		if Input.GetKeyUp(KeyCode.A):
 			Idle()
@@ -42,6 +43,7 @@ class GrandPa(MonoBehaviour):
 
 		if Input.GetKey(KeyCode.D):
 			move += Vector3.right
+			lastDir = 1
 
 		if Input.GetKeyUp(KeyCode.D):
 			Idle()
@@ -50,6 +52,7 @@ class GrandPa(MonoBehaviour):
 
 		if Input.GetKey(KeyCode.W):
 			move += Vector3.up
+			lastDir = 0
 
 		if Input.GetKeyUp(KeyCode.W):
 			Idle()
@@ -58,6 +61,7 @@ class GrandPa(MonoBehaviour):
 
 		if Input.GetKey(KeyCode.S):
 			move += Vector3.down
+			lastDir = 2
 
 		if Input.GetKeyUp(KeyCode.S):
 			Idle()
