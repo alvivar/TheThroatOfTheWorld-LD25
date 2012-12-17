@@ -34,7 +34,11 @@ class God(MonoBehaviour):
 		if checkAnyKey and Event.current.type == EventType.KeyDown:
 			title.text = ""
 			subtitle.text = ""
-			cBlue.particleSystem.Stop(true)
-			cPurple.particleSystem.Stop(true)
-			cRed.particleSystem.Stop(true)
+			Destroy(cBlue.gameObject)
+			Destroy(cPurple.gameObject)
+			Destroy(cRed.gameObject)
+			# to-do generar ventisca disipadora de partículas.
+			# cBlue.particleSystem.Stop(true)
+			# cPurple.particleSystem.Stop(true)
+			# cRed.particleSystem.Stop(true)
 			checkAnyKey = false
