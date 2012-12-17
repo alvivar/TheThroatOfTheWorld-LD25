@@ -24,6 +24,8 @@ class GrandPa(MonoBehaviour):
 		
 	def Idle():
 		move = Vector3.zero
+		print(Vector3.Distance(Vector3.zero, transform.position))
+		print(transform.position)
 
 
 	def Controls():
