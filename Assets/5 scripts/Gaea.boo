@@ -4,8 +4,9 @@ import UnityEngine
 class Gaea (MonoBehaviour):
 
 
-	public player as GameObject
 	public grassPrefab as GameObject
+
+	player as GameObject
 
 	jump as single = 0.2F
 	squares as single = 75
@@ -31,6 +32,7 @@ class Gaea (MonoBehaviour):
 
 		pos.x = pos.x - (row * jump * 0.5)
 		pos.y = pos.y + (row * jump * 0.8)
+		pos.z = 10
 
 		for i in range(0, row + 1):
 			pos.x = origin.x - (row * jump * 0.5)
@@ -38,3 +40,7 @@ class Gaea (MonoBehaviour):
 				Instantiate(grassPrefab, pos, Quaternion.identity)
 				pos.x = pos.x + jump
 			pos.y = pos.y - jump
+
+
+	def paintTrees():
+		pass

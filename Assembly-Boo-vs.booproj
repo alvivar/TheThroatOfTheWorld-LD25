@@ -48,7 +48,7 @@
      <Compile Include="Assets\5 scripts\God.boo" />
      <Compile Include="Assets\5 scripts\GrandMa.boo" />
      <Compile Include="Assets\5 scripts\GrandPa.boo" />
-     <Compile Include="Assets\5 scripts\Green.boo" />
+     <Compile Include="Assets\5 scripts\Trees.boo" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\SolidVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitPremulVertexColor.shader" />
