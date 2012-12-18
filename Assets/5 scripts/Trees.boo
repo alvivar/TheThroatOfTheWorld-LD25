@@ -4,7 +4,7 @@ import UnityEngine
 class Trees (MonoBehaviour):
 
 
-	mother as GameObject
+	mother as GameObject = null
 
 	public originZ as single
 
@@ -20,16 +20,20 @@ class Trees (MonoBehaviour):
 
 
 	def OnTriggerEnter(other as Collider):
-		mother.GetComponent[of Gaea]().hideTrees(originZ)
+		if mother:
+			mother.GetComponent[of Gaea]().hideTrees(originZ)
 
 
 	def OnTriggerExit(other as Collider):
-		mother.GetComponent[of Gaea]().showTrees(originZ)
+		if mother:
+			mother.GetComponent[of Gaea]().showTrees(originZ)
 
 
 	def OnBecameVisible():
-		mother.GetComponent[of Gaea]().trees.Add(self.gameObject)
+		if mother:
+			mother.GetComponent[of Gaea]().trees.Add(self.gameObject)
 
 
 	def OnBecameInvisible():
-		mother.GetComponent[of Gaea]().trees.Remove(self.gameObject)
+		if mother:
+			mother.GetComponent[of Gaea]().trees.Remove(self.gameObject)
