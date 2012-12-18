@@ -1,14 +1,35 @@
 import UnityEngine
 
 
-class Trees (MonoBehaviour): 
+class Trees (MonoBehaviour):
 
 
-	def OnTriggerStay(other as Collider):
-		print("enter")
-		transform.position.z = 1
+	mother as GameObject
+
+	public originZ as single
+
+
+	def Start():
+		mother = GameObject.FindWithTag("Gaea")
+		originZ += Vector3.Distance(Vector3.zero, transform.position) / 1000
+		transform.position.z = originZ
+
+
+	public def adjustZ(howMuch as single):
+		transform.position.z = originZ + howMuch
+
+
+	def OnTriggerEnter(other as Collider):
+		mother.GetComponent[of Gaea]().hideTrees(originZ)
 
 
 	def OnTriggerExit(other as Collider):
-		print("leave")
-		transform.position.z = -1
+		mother.GetComponent[of Gaea]().showTrees(originZ)
+
+
+	def OnBecameVisible():
+		mother.GetComponent[of Gaea]().trees.Add(self.gameObject)
+
+
+	def OnBecameInvisible():
+		mother.GetComponent[of Gaea]().trees.Remove(self.gameObject)
