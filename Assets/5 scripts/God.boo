@@ -36,10 +36,17 @@ class God(MonoBehaviour):
 
 	def OnGUI():
 		if checkAnyKey and Event.current.type == EventType.KeyDown:
+
 			title.text = ""
 			subtitle.text = ""
+
+			Camera.mainCamera.transform.position = player.transform.position
+			Camera.mainCamera.transform.position.z = -10
+
 			player.GetComponent[of GrandPa]().setCameraFollow(true)
+
 			cBlue.particleSystem.Stop(true)
 			cPurple.particleSystem.Stop(true)
 			cRed.particleSystem.Stop(true)
+
 			checkAnyKey = false
