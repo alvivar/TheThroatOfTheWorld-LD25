@@ -10,11 +10,15 @@ class God(MonoBehaviour):
 	public cPurple as ParticleSystem
 	public cRed as ParticleSystem
 
-	private blink as single = 0
-	private checkAnyKey as bool = true
+	player as GameObject
+
+
+	blink as single = 0
+	checkAnyKey as bool = true
 
 
 	def Start():
+		player = GameObject.FindWithTag("Player")
 		title.text = "the Throat of the World"
 		subtitle.text = "press any key"
 		cBlue.transform.position.z = -Random.Range(1, 4)
@@ -34,11 +38,8 @@ class God(MonoBehaviour):
 		if checkAnyKey and Event.current.type == EventType.KeyDown:
 			title.text = ""
 			subtitle.text = ""
-			Destroy(cBlue.gameObject)
-			Destroy(cPurple.gameObject)
-			Destroy(cRed.gameObject)
-			# to-do generar ventisca disipadora de partículas.
-			# cBlue.particleSystem.Stop(true)
-			# cPurple.particleSystem.Stop(true)
-			# cRed.particleSystem.Stop(true)
+			player.GetComponent[of GrandPa]().setCameraFollow(true)
+			cBlue.particleSystem.Stop(true)
+			cPurple.particleSystem.Stop(true)
+			cRed.particleSystem.Stop(true)
 			checkAnyKey = false

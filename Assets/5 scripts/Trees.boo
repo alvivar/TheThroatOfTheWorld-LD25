@@ -19,7 +19,7 @@ class Trees (MonoBehaviour):
 		transform.position.z = originZ + howMuch
 
 
-	def OnTriggerEnter(other as Collider):
+	def OnTriggerStay(other as Collider):
 		if mother:
 			mother.GetComponent[of Gaea]().hideTrees(originZ)
 

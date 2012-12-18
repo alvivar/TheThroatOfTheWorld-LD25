@@ -3,13 +3,12 @@ import UnityEngine
 
 class GrandPa(MonoBehaviour):
 
+	cameraFollow as bool = false
 
 	controller as CharacterController
 
 	move as Vector3 = Vector3.zero
 	speedGround as single = 0.25F
-
-	public lastDir as single = -1 # 0 1 2 3 = up right down left
 
 
 	def Start():
@@ -17,8 +16,12 @@ class GrandPa(MonoBehaviour):
 
 
 	def Update():
-		Cam()
+
+		if cameraFollow:
+			Cam()
+
 		Controls()
+
 		move = transform.TransformDirection(move)
 		move *= speedGround
 		controller.Move(move * Time.deltaTime)
@@ -65,6 +68,10 @@ class GrandPa(MonoBehaviour):
 
 		if Input.GetKeyUp(KeyCode.S):
 			Idle()
+
+
+	public def setCameraFollow(val as bool):
+		cameraFollow = val
 
 
 	def Cam():
