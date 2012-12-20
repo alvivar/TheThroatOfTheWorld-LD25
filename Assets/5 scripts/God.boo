@@ -12,7 +12,6 @@ class God(MonoBehaviour):
 
 	player as GameObject
 
-
 	blink as single = 0
 	checkAnyKey as bool = true
 

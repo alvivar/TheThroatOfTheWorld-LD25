@@ -6,7 +6,10 @@ class Gaea (MonoBehaviour):
 
 	public grassPrefab as GameObject
 	public treesPrefabs as (GameObject)
+	public groundPrefabs as (GameObject)
+
 	public static trees as List = []
+	public rain as ParticleSystem
 
 	player as GameObject
 
