@@ -1,15 +1,39 @@
 import UnityEngine
 
 
-class GrandMa (MonoBehaviour):
+class GrandMa(B2dtk):
 
 
-	theHusband as GameObject
-	
+	player as GameObject
+
 
 	def Start():
-		theHusband = GameObject.FindWithTag("GrandPa")
+		player = GameObject.FindWithTag("Player")
+		b2Anime = GetComponent[of tk2dAnimatedSprite]()
+		b2Control = GetComponent[of CharacterController]()
 
 
 	def Update():
-		transform.LookAt(theHusband.transform)
+
+		if b2IsAttacking:
+			return
+
+		pos = transform.position
+		playerPos = player.transform.position
+
+		if 0.15F < Vector3.Distance(pos, playerPos):
+			b2Move = (playerPos - pos).normalized
+			b2LookToHim(player)
+			b2Walk()
+		else:
+			b2Idle()
+
+		b2Move = transform.TransformDirection(b2Move)
+		b2Move *= b2SpeedGround * 1.2F
+		b2Control.Move(b2Move * Time.deltaTime)
+
+
+	public def CallProtection():
+		b2IsAttacking = true
+		b2Anime.Play("attack")
+		Invoke("b2Idle", 2)

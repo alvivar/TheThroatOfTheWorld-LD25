@@ -1,18 +1,18 @@
 import UnityEngine
 
 
-class GrandPa(MonoBehaviour):
+class GrandPa(B2dtk):
 
-	cameraFollow as bool = false
 
-	controller as CharacterController
+	public cameraFollow as bool = false
 
-	move as Vector3 = Vector3.zero
-	speedGround as single = 0.25F
+	myLove as GameObject
 
 
 	def Start():
-		controller = GetComponent[of CharacterController]()
+		myLove = GameObject.FindWithTag("GrandMa")
+		b2Anime = GetComponent[of tk2dAnimatedSprite]()
+		b2Control = GetComponent[of CharacterController]()
 
 
 	def Update():
@@ -22,13 +22,9 @@ class GrandPa(MonoBehaviour):
 
 		Controls()
 
-		move = transform.TransformDirection(move)
-		move *= speedGround
-		controller.Move(move * Time.deltaTime)
-		
-		
-	def Idle():
-		move = Vector3.zero
+		b2Move = transform.TransformDirection(b2Move)
+		b2Move *= b2SpeedGround
+		b2Control.Move(b2Move * Time.deltaTime)
 
 
 	def Controls():
@@ -36,38 +32,46 @@ class GrandPa(MonoBehaviour):
 		# left
 
 		if Input.GetKey(KeyCode.A):
-			move += Vector3.left
-			lastDir = 3
+			b2LookLeft()
+			b2Walk()
+			b2Move += Vector3.left
 
 		if Input.GetKeyUp(KeyCode.A):
-			Idle()
+			b2Idle()
 
 		# right
 
 		if Input.GetKey(KeyCode.D):
-			move += Vector3.right
-			lastDir = 1
+			b2LookRight()
+			b2Walk()
+			b2Move += Vector3.right
 
 		if Input.GetKeyUp(KeyCode.D):
-			Idle()
+			b2Idle()
 
 		# up
 
 		if Input.GetKey(KeyCode.W):
-			move += Vector3.up
-			lastDir = 0
+			b2Walk()
+			b2Move += Vector3.up
 
 		if Input.GetKeyUp(KeyCode.W):
-			Idle()
+			b2Idle()
 
 		# down
 
 		if Input.GetKey(KeyCode.S):
-			move += Vector3.down
-			lastDir = 2
+			b2Walk()
+			b2Move += Vector3.down
 
 		if Input.GetKeyUp(KeyCode.S):
-			Idle()
+			b2Idle()
+
+
+		# call protection.
+
+		if Input.GetKeyDown(KeyCode.Space):
+			myLove.GetComponent[of GrandMa]().CallProtection()
 
 
 	public def setCameraFollow(val as bool):

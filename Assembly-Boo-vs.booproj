@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\5 scripts\B2dtk.boo" />
      <Compile Include="Assets\5 scripts\Gaea.boo" />
      <Compile Include="Assets\5 scripts\God.boo" />
      <Compile Include="Assets\5 scripts\GrandMa.boo" />
