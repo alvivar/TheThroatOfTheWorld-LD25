@@ -4,6 +4,9 @@ import UnityEngine
 class GrandMa(B2dtk):
 
 
+	public luzGliph as GameObject
+	public luzParticles as ParticleSystem
+
 	player as GameObject
 
 
@@ -34,6 +37,22 @@ class GrandMa(B2dtk):
 
 
 	public def CallProtection():
+
+		if b2IsAttacking:
+			return
+
 		b2IsAttacking = true
 		b2Anime.Play("attack")
+
+		luz as Vector3 = transform.position
+		if b2IsLookingRight:
+			luz.x -= -0.05F
+		else:
+			luz.x += -0.05F
+		luz.y += 0.035F
+		luz.z = -1
+
+		Instantiate(luzGliph, luz, Quaternion.identity)
+		Instantiate(luzParticles, luz, Quaternion.identity)
+
 		Invoke("b2Idle", 2)
