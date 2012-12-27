@@ -12,6 +12,7 @@ class GrandPa(B2dtk):
 	def Start():
 		myLove = GameObject.FindWithTag("GrandMa")
 		b2Anime = GetComponent[of tk2dAnimatedSprite]()
+		b2Anime.animationCompleteDelegate = b2Idle
 		b2Control = GetComponent[of CharacterController]()
 
 
@@ -20,7 +21,8 @@ class GrandPa(B2dtk):
 		if cameraFollow:
 			Cam()
 
-		Controls()
+		if not b2IsAttacking:
+			Controls()
 
 		b2Move = transform.TransformDirection(b2Move)
 		b2Move *= b2SpeedGround
@@ -32,7 +34,7 @@ class GrandPa(B2dtk):
 		# left
 
 		if Input.GetKey(KeyCode.A):
-			b2LookLeft()
+			#b2LookLeft()
 			b2Walk()
 			b2Move += Vector3.left
 
@@ -42,7 +44,7 @@ class GrandPa(B2dtk):
 		# right
 
 		if Input.GetKey(KeyCode.D):
-			b2LookRight()
+			#b2LookRight()
 			b2Walk()
 			b2Move += Vector3.right
 
@@ -67,6 +69,34 @@ class GrandPa(B2dtk):
 		if Input.GetKeyUp(KeyCode.S):
 			b2Idle()
 
+
+		dash as single = 1
+
+		# up punch
+
+		if Input.GetKeyDown(KeyCode.UpArrow):
+			b2Anime.Play("attack")
+			b2Move = Vector3.up * dash
+
+		# right punch
+
+		if Input.GetKeyDown(KeyCode.RightArrow):
+			b2LookRight()
+			b2Anime.Play("attack")
+			b2Move = Vector3.right * dash
+
+		# down punch
+
+		if Input.GetKeyDown(KeyCode.DownArrow):
+			b2Anime.Play("attack")
+			b2Move = Vector3.down * dash
+
+		# left punch
+
+		if Input.GetKeyDown(KeyCode.LeftArrow):
+			b2LookLeft()
+			b2Anime.Play("attack")
+			b2Move = Vector3.left * dash
 
 		# call protection.
 
