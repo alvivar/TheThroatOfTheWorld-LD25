@@ -21,19 +21,22 @@ class GrandMa(B2dtk):
 		if b2IsAttacking:
 			return
 
-		pos = transform.position
-		playerPos = player.transform.position
+		pos as Vector3 = transform.position
+		pos.z = 0
+
+		playerPos as Vector3 = player.transform.position
+		playerPos.z = 0
 
 		if 0.15F < Vector3.Distance(pos, playerPos):
-			b2Move = (playerPos - pos).normalized
 			b2LookToHim(player)
 			b2Walk()
+			b2Move = (playerPos - pos).normalized
+			b2Move = transform.TransformDirection(b2Move)
+			b2Move *= b2SpeedGround * 1.2F
+			b2Move.z = GetComponent[of TreeHelper]().level
+			b2Control.Move(b2Move * Time.deltaTime)
 		else:
 			b2Idle()
-
-		b2Move = transform.TransformDirection(b2Move)
-		b2Move *= b2SpeedGround * 1.2F
-		b2Control.Move(b2Move * Time.deltaTime)
 
 
 	public def CallProtection():

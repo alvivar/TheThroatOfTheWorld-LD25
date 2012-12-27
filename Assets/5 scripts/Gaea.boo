@@ -8,7 +8,6 @@ class Gaea (MonoBehaviour):
 	public treesPrefabs as (GameObject)
 	public groundPrefabs as (GameObject)
 
-	public static trees as List = []
 	public rain as ParticleSystem
 
 	player as GameObject
@@ -66,12 +65,16 @@ class Gaea (MonoBehaviour):
 
 			Instantiate(treesPrefabs[Random.Range(0, len(treesPrefabs))], Vector3(ranX, ranY, 0), Quaternion.identity)
 
+		for i in range(0, maxTrees / 5):
 
-	public def hideTrees(baseLevel as single):
-		for tree as GameObject in trees:
-			tree.GetComponent[of Trees]().adjustZ(1)
+			# harcoded, precalculated values :( #todo
+			ranX = Random.Range(0, 7.5F)
+			ranY = Random.Range(0, 12F)
 
+			if Random.Range(0, 2):
+				ranX *= -1
 
-	public def showTrees(baseLevel as single):
-		for tree as GameObject in trees:
-			tree.GetComponent[of Trees]().adjustZ(-1)
+			if ranY <= 3 and Random.Range(0, 2):
+				ranY *= -1
+
+			Instantiate(groundPrefabs[Random.Range(0, len(groundPrefabs))], Vector3(ranX, ranY, 5), Quaternion.identity)

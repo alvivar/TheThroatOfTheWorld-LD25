@@ -15,25 +15,9 @@ class Trees (MonoBehaviour):
 		transform.position.z = originZ
 
 
-	public def adjustZ(howMuch as single):
-		transform.position.z = originZ + howMuch
-
-
-	def OnTriggerStay(other as Collider):
-		if mother:
-			mother.GetComponent[of Gaea]().hideTrees(originZ)
+	def OnTriggerEnter(other as Collider):
+		other.gameObject.GetComponent[of TreeHelper]().up(originZ)
 
 
 	def OnTriggerExit(other as Collider):
-		if mother:
-			mother.GetComponent[of Gaea]().showTrees(originZ)
-
-
-	def OnBecameVisible():
-		if mother:
-			mother.GetComponent[of Gaea]().trees.Add(self.gameObject)
-
-
-	def OnBecameInvisible():
-		if mother:
-			mother.GetComponent[of Gaea]().trees.Remove(self.gameObject)
+		other.gameObject.GetComponent[of TreeHelper]().down(originZ)

@@ -17,9 +17,9 @@ class B2dtk(MonoBehaviour):
 
 	def b2Idle():
 		b2Anime.Play("idle")
+		b2Move = Vector3.zero
 		b2IsAttacking = false
 		b2IsWalking = false
-		b2Move = Vector3.zero
 
 
 	def b2Walk():
@@ -45,4 +45,3 @@ class B2dtk(MonoBehaviour):
 			b2LookRight()
 		else:
 			b2LookLeft()
-
