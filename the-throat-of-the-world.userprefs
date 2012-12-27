@@ -1,16 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/5 scripts/GrandMa.boo">
-    <Files>
-      <File FileName="Assets/5 scripts/GrandPa.boo" Line="1" Column="1" />
-      <File FileName="Assets/5 scripts/GrandMa.boo" Line="58" Column="22" />
-      <File FileName="Assets/5 scripts/B2dtk.boo" Line="14" Column="18" />
-      <File FileName="Assets/5 scripts/God.boo" Line="1" Column="1" />
-      <File FileName="Assets/5 scripts/Gaea.boo" Line="44" Column="31" />
-      <File FileName="Assets/5 scripts/Trees.boo" Line="1" Column="1" />
-      <File FileName="Assets/5 scripts/misc/KillOnTime.boo" Line="7" Column="23" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
