@@ -70,7 +70,7 @@ class GrandPa(B2dtk):
 			b2Idle()
 
 
-		dash as single = 1
+		dash as single = 30
 
 		# up punch
 
